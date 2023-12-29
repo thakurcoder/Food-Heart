@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "parcel": "^2.10.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "name": "namaste-food",
+  "version": "1.0.0",
+  "description": "food erdering app",
+  "main": "App.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thakurcoder/Namaste-Food.git"
+  },
+  "author": "Aman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thakurcoder/Namaste-Food/issues"
+  },
+  "homepage": "https://github.com/thakurcoder/Namaste-Food#readme"
+}

@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 
+.header{
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .body{
+    display: flex;
+} */
+/* 
+.logo-container>img{
+    height: 100px;
+}
+.nav-items{
+    width: 500px;
+    margin-left: 20px;
+}
+
+.nav-items>ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.res-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+
+}
+
+.res_card{
+    border: 1px solid black;
+
+    width: 200px;
+    cursor: pointer;  
+    margin-top: 10px;
+}
+
+.res_card:hover{
+    border: 5px solid rgb(7, 52, 81);
+}
+
+
+.res_card>img{
+    width:200px;
+}
+
+.filter-btn{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.shimmer-cnt{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.shimmer-card{
+    width:200px;
+    height: 300px;
+    background-color: rgb(159, 156, 151);
+    margin-top: 20px;
+}
+
+.login{
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.search-cnt{
+    width:90%;
+}
+
+.search-box{
+    width: 800px;
+    height: 30px;
+    margin: 20px 10px 10px 60px;
+}
+.search-btn{
+    width: 50px;
+    height: 30px;
+    margin: 50px 50px 0px 10px;
+}
+
+.menu_shimmer{
+    
+    background-color: rgb(160, 170, 172);
+    display: block;
+    width:90%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 5%;
+    border-radius: 100px;
+}
+
+.about-restaurant-menu{
+    margin-top: 10px;
+    border-radius: 100px;
+    border: 5px solid gray;
+    text-align: center;
+}
+
+.menu-card{
+    margin-top: 10px;
+    border-radius: 100px;
+    border: 5px solid gray;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.isonline{
+    color:aquamarine;
+    font-size: 150px;
+}  */

@@ -28,7 +28,7 @@ const Restaurantmenu = ()=>{
 
         setmenu_list(json)
         setmenu_list_ofmenu(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards)
-        console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards)
+        // console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards)
     };
 
     // filter the item category

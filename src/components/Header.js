@@ -21,26 +21,26 @@ const Header = ()=>{
                 />
             </div>
             <div className="nav-items ">
-                <ul className=" flex p-4 space-x-4 font-bold text-rose-100 " >
-                    <li className="">
+                <ul className=" flex p-4 space-x-4 font-bold text-rose-100 text-xl m-3" >
+                    <li className="p-2" >
                         Online Status: {isonline ? "🟢": "🔴"}
                     </li>
-                    <li>
+                    <li className="hover:bg-orange-400 p-2">
                         <Link to="/">Home</Link>
                     </li>
-                    <li>
+                    <li className="hover:bg-orange-400 p-2">
                         <Link to="/about">About</Link>
                     </li>
-                    <li>
+                    <li className="hover:bg-orange-400 p-2">
                         <Link to="Contact" >Contact</Link>
                     </li>
-                    <li>
+                    <li className="hover:bg-orange-400 p-2" >
                        <Link  to="cart"> cart ( {cartitem.length} item) </Link>
                     </li>
-                    <button className="login" onClick={()=>{
+                    {/* <button className="login" onClick={()=>{
                        (btn_login === "Login") ? setbtn_login("Logout") : setbtn_login("Login")
            
-                    }}>{btn_login}</button>
+                    }}>{btn_login}</button> */}
                 </ul>
             </div>
 

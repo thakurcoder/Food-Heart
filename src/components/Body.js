@@ -14,7 +14,7 @@ const Body = () => {
 
 
     useEffect(()=>{
-      console.log('useeffect is called!');
+      // console.log('useeffect is called!');
       fetchdata()
     },[]);
     
@@ -24,7 +24,7 @@ const Body = () => {
       const data = await fetch("https://corsproxy.org/?" + encodeURIComponent("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.2436838&lng=77.4730653&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"));
       
       const json = await data.json();
-      console.log("json",json)
+      // console.log("json",json)
       // filter the card of resturent it changing every time
       let flag = true
       const filterRes = json.data.cards.filter((e,index)=>{
@@ -39,7 +39,7 @@ const Body = () => {
       setreslist(filterRes[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
       setfilterresdata(filterRes[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
       
-      console.log("resdata",reslist)
+      // console.log("resdata",reslist)
 
     }
 
@@ -54,11 +54,11 @@ const Body = () => {
 
       <div className="filter">
 {/* search box */}
-      <div className="search-cnt mt-2 ">
-        <input className="search-box bg-slate-200 rounded-full w-2/3 ml-48 h-10" type="text" value={searchtext} onChange={(e)=>{
+      <div className="search-cnt mt-5 mb-5">
+        <input className="search-box bg-slate-200 rounded-full w-2/3 ml-48 h-10 p-2 pl-2 text-lg" type="text" value={searchtext} placeholder="Search a restaurant..." onChange={(e)=>{
           setsearchtext(e.target.value)
         }} />
-        <button className="search-btn rounded-full bg-green-300 w-28 h-10 ml-4" onClick={()=>{
+        <button className="search-btn rounded-full bg-green-300 w-28 h-10 ml-4 " onClick={()=>{
         
           const filterdata = reslist.filter(
             (res)=> res.info.name.toLowerCase().includes(searchtext) 
@@ -67,19 +67,7 @@ const Body = () => {
         }} >SEARCH</button>
 
       </div>
-        
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filterdata = reslist.filter(
-                (res)=> res.info.avgRating > 4.3    
-                );
-            console.log(reslist)
-            setreslist(filterdata);
-          }}
-        >
-          Filter res
-        </button>
+
       </div>
       <div className="res-card-container flex flex-row flex-wrap w-full justify-around">
 
@@ -93,6 +81,7 @@ const Body = () => {
 
 
       </div>
+
     </div>
   );
 };

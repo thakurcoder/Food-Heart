@@ -8,7 +8,10 @@ const Cart = () => {
         dispatch(removeitem(item))
     }
   const selector = useSelector((state) => state.cart.item);
-  console.log(selector);
+  // console.log(selector);
+  if (selector.length==0){
+    return <img className="ml-56 mt-32" src="https://i0.wp.com/www.huratips.com/wp-content/uploads/2019/04/empty-cart.png?fit=603%2C288&ssl=1" />
+  }
   return (
     <div>
       {selector.map((e) => {

@@ -1,5 +1,5 @@
 const Shimmer = ()=>{
-    return <div className="shimmer-cnt  flex flex-wrap justify-evenly">
+    return <div className="shimmer-cnt  flex flex-wrap justify-evenly animate-pulse">
         
         <div className="shimmer-card h-96 w-52 bg-slate-500 m-3" ></div>
 

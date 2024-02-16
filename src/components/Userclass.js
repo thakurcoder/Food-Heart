@@ -17,14 +17,14 @@ class Userclass extends React.Component{
     async componentDidMount(){
         const data = await fetch("https://api.github.com/users/thakurcoder")
         const json = await data.json()
-        console.log(json)
+        // console.log(json)
         this.setState({
             userinfo:json
         })
     }
     render(){
     
-    console.log(this.props.name ," chile render")
+    // console.log(this.props.name ," chile render")
         return(
             <div>
                 <h1>{this.state.userinfo.name}</h1>

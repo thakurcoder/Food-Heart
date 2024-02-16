@@ -10,6 +10,7 @@ import Restaurantmenu from "./components/restaurant_menu_component/RestaurantMen
 import { Provider } from "react-redux";
 import appstore from "./utils/appstore";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 const About = lazy(()=> import("./components/About"));
 
 const Applayout = ()=>{
@@ -20,6 +21,7 @@ const Applayout = ()=>{
             <Provider store={appstore}>
             <Header />
             <Outlet />
+            <Footer/>
             </Provider>
         </div>
     )

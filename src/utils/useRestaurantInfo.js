@@ -20,7 +20,7 @@ const useRestaurantInfo = (resid)=>{
         const data = fetch("https://corsproxy.org/?"+encodeURIComponent(url));
         const json = (await data).json()
         setmenu_list(json)
-        console.log("this is json in use",json)
+        // console.log("this is json in use",json)
         setmenu_list_ofmenu(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards)
 
     }

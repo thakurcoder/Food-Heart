@@ -9,10 +9,10 @@ const Menucard = (props) => {
   const handleAddItem = (item)=>{
     // dispatch a action
     dispatch(additem(item))
-    console.log(item)
+    // console.log(item)
   }
 
-   console.log("this is props",props)
+  //  console.log("this is props",props)
     // this condition is written because in some cards the data is written in different way so its give error 
     // optional channing is importaint in it
     // it is a swiggy api problem

@@ -12,8 +12,8 @@
   
   "name": "namaste-food",
   "version": "1.0.0",
-  "description": "food erdering app",
-  "main": "App.js",
+  "description": "food ordering app",
+
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
@@ -27,7 +27,9 @@
   },
   "scripts": {
     "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
+    
   },
   "repository": {
     "type": "git",

@@ -27,8 +27,16 @@ const Restaurantmenu = ()=>{
         const json = await data.json()
 
         setmenu_list(json)
-        setmenu_list_ofmenu(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards)
-        // console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards)
+        // console.log("json ",json)
+
+        const filterdata = json?.data?.cards.filter((e)=>{
+            return e?.groupedCard?.cardGroupMap?.REGULAR?.cards
+        })
+        // console.log("filder data ",filterdata)
+
+        setmenu_list_ofmenu(filterdata[0].groupedCard.cardGroupMap.REGULAR.cards)
+        // console.log("setmenu_list ",json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards)
+
     };
 
     // filter the item category

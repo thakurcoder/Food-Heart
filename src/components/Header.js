@@ -12,7 +12,12 @@ const Header = ()=>{
     // subscribing to the store using selextor
     const cartitem = useSelector((store)=>store.cart.item)
 
+    // location usestate
+    const [location, setLocation] = useState("delhi")
+    const [locationflag, setLocationFlag] = useState(true)
+
     return(
+        
         <div className="header bg-teal-500 flex justify-between " >
             <div className="logo-container">
                 <img 
@@ -43,6 +48,7 @@ const Header = ()=>{
                     }}>{btn_login}</button> */}
                 </ul>
             </div>
+     
 
         </div>
     )

@@ -13,7 +13,7 @@
   "name": "namaste-food",
   "version": "1.0.0",
   "description": "food ordering app",
-
+  
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",

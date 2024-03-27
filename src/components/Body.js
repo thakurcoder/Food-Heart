@@ -3,6 +3,7 @@ import Res_card, {aggregatediscount} from "./Res_card";
 import Shimmer from "./Shimmer";
 import { useState } from "react";
 import useonlinestatus from "../utils/useonlinestatus";
+import { RESTURENT_URL } from "../utils/contant";
 
 const Body = () => {
   // state variable for restaurant 
@@ -19,10 +20,16 @@ const Body = () => {
     },[]);
     
     // fetching resturent data 
-
+    const proxy = fetch('https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.2436838&lng=77.4730653&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING', {
+      headers: {
+      'x-cors-api-key': 'temp_8f859260879ebbf60847dffe00877581'
+      }
+    })
     const fetchdata = async ()=>{
-      const data = await fetch("https://corsproxy.org/?" + encodeURIComponent("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.2436838&lng=77.4730653&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"));
-      
+     
+      const data = await proxy;
+        
+    
       const json = await data.json();
       // console.log("json",json)
       // filter the card of resturent it changing every time

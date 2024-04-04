@@ -20,14 +20,20 @@ const Restaurantmenu = ()=>{
         fetchdata()
     },[])
 
+    const url = MENU_URL + resid
+    const proxy = fetch('https://proxy.cors.sh/'+url, {
+      headers: {
+      'x-cors-api-key': 'temp_8f859260879ebbf60847dffe00877581'
+      }
+    })
+
     const fetchdata = async ()=>{
-        const url = MENU_URL + resid
-        const data = await fetch("https://corsproxy.org/?"+encodeURIComponent(url));
+        const data = await proxy;
 
         const json = await data.json()
 
         setmenu_list(json)
-        // console.log("json ",json)
+        console.log("json ",json)
 
         const filterdata = json?.data?.cards.filter((e)=>{
             return e?.groupedCard?.cardGroupMap?.REGULAR?.cards

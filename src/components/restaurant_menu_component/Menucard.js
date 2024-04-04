@@ -1,16 +1,26 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import {useDispatch} from "react-redux"
 import { additem } from "../../utils/cartSlice";
-
+import AddNotification from "./AddNotification";
 const Menucard = (props) => {
 
   const dispatch = useDispatch()
+  const [showNotification, setShowNotification] = useState(false);
   // handling add button 
   const handleAddItem = (item)=>{
+
     // dispatch a action
     dispatch(additem(item))
+    setShowNotification(true); 
+    setTimeout(() => {
+      setShowNotification(false)
+    }, 2000);
+
     // console.log(item)
   }
+
+
 
   //  console.log("this is props",props)
     // this condition is written because in some cards the data is written in different way so its give error 
@@ -32,7 +42,7 @@ const Menucard = (props) => {
 
     <>
     {/* this is for item header */}
-    <div className="flex justify-center space-x-80 border-y-4 p-4 cursor-pointer  " onClick={handle}>
+    <div className="flex justify-center space-x-80 border-y-4 p-4 cursor-pointer m-4 " onClick={handle}>
       <div>
       <h1 className="font-bold text-blue-400" > 
            
@@ -40,7 +50,7 @@ const Menucard = (props) => {
           </h1>
       </div>
       <div>
-        <h1>⬇️</h1>
+        <h1>{dropdown&&"⬆️"}{!dropdown&&"⬇️"}</h1>
       </div>
     </div>
 {/* this is item body */}
@@ -56,11 +66,16 @@ const Menucard = (props) => {
          </h2>
          <h2>{"INR: " +  e.card.info.price/100}</h2>
          </div>
-         <div className="">
+         <div className="flex-col">
          <img className="rounded-lg" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" + (e.card.info.imageId)}/>
-         <button className=" bg-slate-900 text-cyan-300 p-2 relative" onClick={()=>handleAddItem(e)}>Add +</button>
+
+         <div className="flex justify-center ">
+         <button className=" bg-slate-100 shadow-sm w-40 text-green-500 font-bold p-2 relative m-2 -mt-4" onClick={()=>handleAddItem(e)}>Add +</button>
+         </div>
+
        </div>
     </div>
+         {showNotification && <AddNotification/>}
     </div>
   })
 }

@@ -40,7 +40,7 @@ const Header = ()=>{
                         <Link to="Contact" >Contact</Link>
                     </li>
                     <li className="hover:bg-orange-400 p-2" >
-                       <Link  to="cart"> cart ( {cartitem.length} item) </Link>
+                       <Link  to="cart"> Cart ( {cartitem.length} item) </Link>
                     </li>
                     {/* <button className="login" onClick={()=>{
                        (btn_login === "Login") ? setbtn_login("Logout") : setbtn_login("Login")

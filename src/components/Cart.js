@@ -1,46 +1,97 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeitem } from "../utils/cartSlice";
+import { removeitem, additem } from "../utils/cartSlice";
 
 const Cart = () => {
-    const dispatch = useDispatch()
-    // logic for removing item
-    const handleRemoveItem = (item)=>{
-        dispatch(removeitem(item))
-    }
+  const dispatch = useDispatch();
+
+  // Logic for removing item
+  const handleRemoveItem = (item) => {
+    dispatch(removeitem(item));
+  };
+
+  const handleAddItem = (item) => {
+    dispatch(additem(item));
+  };
+
   const selector = useSelector((state) => state.cart.item);
-  // console.log(selector);
-  if (selector.length==0){
-    return <img className="ml-56 mt-32" src="https://i0.wp.com/www.huratips.com/wp-content/uploads/2019/04/empty-cart.png?fit=603%2C288&ssl=1" />
+
+  let cart_object = {};
+  selector.forEach((e) => {
+    if (cart_object[e?.card?.info?.id] === undefined) {
+      cart_object[e?.card?.info?.id] = 1;
+    } else {
+      cart_object[e?.card?.info?.id] += 1;
+    }
+  });
+
+  if (selector.length === 0) {
+    return (
+      <img
+        className="mx-auto mt-12"
+        src="https://i0.wp.com/www.huratips.com/wp-content/uploads/2019/04/empty-cart.png?fit=603%2C288&ssl=1"
+        alt="Empty Cart"
+      />
+    );
   }
+
   return (
-    <div>
-      {selector.map((e) => {
+    <div className="mx-auto mt-8">
+      {Object.keys(cart_object).map((itemId) => {
+        const item = selector.find((e) => e?.card?.info?.id === itemId);
+
         return (
-          <div className="flex justify-center">
-            <div className="flex justify-center space-x-80 m-4 p-3  bg-slate-300 w-6/12">
-              <div className="">
-                <h2 className="font-bold">{e.card.info.name}</h2>
-                <h2>{"INR: " + e.card.info.price / 100}</h2>
+          <div key={itemId} className="flex justify-center mb-4">
+            <div className="flex items-center p-4 bg-gray-100 rounded-lg shadow-md">
+              <img
+                className="rounded-lg w-24 h-24 mr-4"
+                src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${item?.card?.info?.imageId}`}
+                alt={item?.card?.info?.name}
+              />
+              <div>
+                <h2 className="font-bold">{item?.card?.info?.name}</h2>
+                <h2>{"INR: " + (item?.card?.info?.price / 100)*cart_object[itemId]}</h2>
               </div>
-              <div className="">
-                <img
-                  className="rounded-lg"
-                  src={
-                    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                    e.card.info.imageId
-                  }
-                />
+              <div className="ml-auto flex items-center">
                 <button
-                  className=" bg-slate-900 text-cyan-300 p-2 relative"
-                  onClick={() => handleRemoveItem(e)}
+                  className="bg-gray-500 text-white font-bold py-2 px-4 rounded-l ml-4"
+                  onClick={() => handleRemoveItem(item)}
                 >
-                  Delete
+                  -
+                </button>
+                <button className="bg-gray-500 text-white font-bold py-2 px-4">
+                  {cart_object[itemId]}
+                </button>
+                <button
+                  className="bg-gray-500 text-white font-bold py-2 px-4 rounded-r"
+                  onClick={() => handleAddItem(item)}
+                >
+                  +
                 </button>
               </div>
             </div>
           </div>
         );
       })}
+      {/* payment  */}
+   
+        <div className="mx-auto mt-8 bg-gray-100 p-4 rounded-lg shadow-md">
+        <h1 className="text-xl font-bold mb-4">Bill Details</h1>
+        <div className="flex justify-between">
+          <div>
+            <h1 className="font-bold">Item Total</h1>
+            <h1>₹{/* Calculate Item Total Here */}</h1>
+          </div>
+          <div>
+            <h1 className="font-bold">GST 18%</h1>
+            <h1>₹{/* Calculate GST Here */}</h1>
+          </div>
+          <div>
+            <h1 className="font-bold">TO PAY</h1>
+            <h1>₹{/* Calculate Total to Pay Here */}</h1>
+          </div>
+        </div>
+    </div>
+
     </div>
   );
 };

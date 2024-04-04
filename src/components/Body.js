@@ -42,7 +42,7 @@ const Body = () => {
         }
 
       })
-      console.log("filter res is ",filterRes)
+      // console.log("filter res is ",filterRes)
       setreslist(filterRes[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
       setfilterresdata(filterRes[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
       

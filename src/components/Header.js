@@ -1,57 +1,58 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utils/contant";
-import {Link} from "react-router-dom"
-import useonlinestatus from "../utils/useonlinestatus";
-import {useSelector} from "react-redux";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
-const Header = ()=>{
-    // login function
-    const [btn_login ,setbtn_login] = useState("Login")
-    const isonline = useonlinestatus();
+const Header = () => {
+  // Login function
+  const [btn_login, setbtn_login] = useState("Login");
+  const isOnline = useOnlineStatus();
 
-    // subscribing to the store using selextor
-    const cartitem = useSelector((store)=>store.cart.item)
+  // Subscribing to the store using selector
+  const cartItem = useSelector((store) => store.cart.item);
 
-    // location usestate
-    const [location, setLocation] = useState("delhi")
-    const [locationflag, setLocationFlag] = useState(true)
+  // Location useState
+  const [location, setLocation] = useState("Delhi");
+  const [locationFlag, setLocationFlag] = useState(true);
 
-    return(
-        
-        <div className="header bg-teal-500 flex justify-between " >
-            <div className="logo-container">
-                <img 
-                className=" w-24 "
-                src={LOGO_URL}
-                />
-            </div>
-            <div className="nav-items ">
-                <ul className=" flex p-4 space-x-4 font-bold text-rose-100 text-xl m-3" >
-                    <li className="p-2" >
-                        Online Status: {isonline ? "🟢": "🔴"}
-                    </li>
-                    <li className="hover:bg-orange-400 p-2">
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li className="hover:bg-orange-400 p-2">
-                        <Link to="/about">About</Link>
-                    </li>
-                    <li className="hover:bg-orange-400 p-2">
-                        <Link to="Contact" >Contact</Link>
-                    </li>
-                    <li className="hover:bg-orange-400 p-2" >
-                       <Link  to="cart"> Cart ( {cartitem.length} item) </Link>
-                    </li>
-                    {/* <button className="login" onClick={()=>{
-                       (btn_login === "Login") ? setbtn_login("Logout") : setbtn_login("Login")
-           
-                    }}>{btn_login}</button> */}
-                </ul>
-            </div>
-     
+  // State to manage the visibility of navigation items on small screens
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
-        </div>
-    )
-}
+  return (
+    <div className="header bg-teal-500 flex justify-between items-center p-4 w-screen">
+      <div className="logo-container">
+        <img className="w-24" src={LOGO_URL} alt="Logo" />
+      </div>
+      {/* Toggle button for small screens */}
+      <button
+        className="block md:hidden text-white focus:outline-none"
+        onClick={() => setIsNavOpen(!isNavOpen)}
+      >
+        {isNavOpen ? "Close" : "Menu"}
+      </button>
+      {/* Navigation items */}
+      <div className={`nav-items md:flex ${isNavOpen ? 'flex' : 'hidden'}`}>
+        <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 font-roboto text-lg md:text-xl text-white">
+          <li className="hover:bg-teal-400 rounded-md p-2">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="hover:bg-teal-400 rounded-md p-2">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="hover:bg-teal-400 rounded-md p-2">
+            <Link to="Contact">Contact</Link>
+          </li>
+          <li className="hover:bg-teal-400 rounded-md p-2">
+            <Link to="cart"> Cart ({cartItem.length} item) </Link>
+          </li>
+          <li className="p-2">
+            Online Status: {isOnline ? "🟢" : "🔴"}
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 export default Header;

@@ -16,11 +16,14 @@ const Cart = () => {
   const selector = useSelector((state) => state.cart.item);
 
   let cart_object = {};
+  let total = 0
   selector.forEach((e) => {
     if (cart_object[e?.card?.info?.id] === undefined) {
       cart_object[e?.card?.info?.id] = 1;
+      total = (e.card.info.price/100 || e.card.info.defaultPrice/100) + total
     } else {
       cart_object[e?.card?.info?.id] += 1;
+      total = (e.card.info.price/100 || e.card.info.defaultPrice/100) + total
     }
   });
 
@@ -36,7 +39,10 @@ const Cart = () => {
 
   return (
     <div className="mx-auto mt-8">
-      {Object.keys(cart_object).map((itemId) => {
+      {
+        
+      Object.keys(cart_object).map((itemId) => {
+       
         const item = selector.find((e) => e?.card?.info?.id === itemId);
 
         return (
@@ -49,7 +55,7 @@ const Cart = () => {
               />
               <div>
                 <h2 className="font-bold">{item?.card?.info?.name}</h2>
-                <h2>{"INR: " + (item?.card?.info?.price / 100)*cart_object[itemId]}</h2>
+                <h2>{"INR: " + (item.card.info.price/100 || item.card.info.defaultPrice/100)*cart_object[itemId]}</h2>
               </div>
               <div className="ml-auto flex items-center">
                 <button
@@ -73,24 +79,23 @@ const Cart = () => {
         );
       })}
       {/* payment  */}
-   
-        <div className="mx-auto mt-8 bg-gray-100 p-4 rounded-lg shadow-md">
-        <h1 className="text-xl font-bold mb-4">Bill Details</h1>
-        <div className="flex justify-between">
-          <div>
-            <h1 className="font-bold">Item Total</h1>
-            <h1>₹{/* Calculate Item Total Here */}</h1>
-          </div>
-          <div>
-            <h1 className="font-bold">GST 18%</h1>
-            <h1>₹{/* Calculate GST Here */}</h1>
-          </div>
-          <div>
-            <h1 className="font-bold">TO PAY</h1>
-            <h1>₹{/* Calculate Total to Pay Here */}</h1>
-          </div>
+      <div class="flex flex-col items-center p-2 shadow-md">
+    <h1 class="text-xl font-bold mb-4">Bill Details</h1>
+    <div class="mx-auto mt-8 bg-gray-100 p-4 rounded-lg shadow-md w-96">
+        <div class="mb-4 md:mb-0 flex justify-evenly">
+            <h1 class="font-bold  ">Item Total</h1>
+            <h1>₹{total}</h1>
+        </div>
+        <div className="flex justify-evenly">
+            <h1 class="font-bold">GST 18%</h1>
+            <h1>₹{Math.floor(total/100*18)}</h1>
+        </div>
+        <div class="mt-4 flex justify-evenly">
+            <h1 class="font-bold">TO PAY</h1>
+            <h1>₹{total + Math.floor(total/100*18)}</h1>
         </div>
     </div>
+</div>
 
     </div>
   );
